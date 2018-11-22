@@ -297,4 +297,11 @@ def setup_routing(functions):
         param_array = []
         for p in f_info.parameters:
             param_array.append('<%s>' % p)
-        route('/%s/%s' % (f_info.route, '/'.join(param_array)), f_info.method, getfunction(f_info))
+
+        s_route = '/%s' % (f_info.route)
+
+        if (len(param_array) > 0):
+            s_route = "%s/%s" % (s_route, '/'.join(param_array))
+
+        print "%s @ %s " % (f_info.method, s_route)
+        route('%s' % (s_route), f_info.method, getfunction(f_info))
