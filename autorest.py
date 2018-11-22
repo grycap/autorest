@@ -302,6 +302,7 @@ def setup_routing(functions):
 
         if (len(param_array) > 0):
             s_route = "%s/%s" % (s_route, '/'.join(param_array))
+            s_route = s_route.replace('//', '/')
 
         print "%s @ %s " % (f_info.method, s_route)
         route('%s' % (s_route), f_info.method, getfunction(f_info))
